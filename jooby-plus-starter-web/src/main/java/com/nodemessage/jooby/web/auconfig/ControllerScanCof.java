@@ -10,4 +10,5 @@ import io.jooby.Jooby;
 public interface ControllerScanCof {
     void register(Jooby jooby);
     void addControllers(Class<?> clazz) ;
+    void addResourceControllers(Class<?> clazz) ;
 }

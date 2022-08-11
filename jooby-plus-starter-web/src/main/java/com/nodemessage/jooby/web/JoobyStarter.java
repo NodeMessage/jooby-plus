@@ -7,6 +7,13 @@ import com.nodemessage.jooby.web.auconfig.ComponentInject;
 import com.nodemessage.jooby.web.auconfig.JoobyStarterStore;
 import com.nodemessage.jooby.web.auconfig.ModuleInject;
 import com.nodemessage.jooby.web.auconfig.ModuleScanCof;
+import com.nodemessage.jooby.web.auconfig.annotation.JoobyPlusStarter;
+import com.nodemessage.jooby.web.config.WebConfig;
+import io.jooby.Jooby;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.util.function.Supplier;
 
 /**
  * @author wjsmc
@@ -16,15 +23,39 @@ import com.nodemessage.jooby.web.auconfig.ModuleScanCof;
 
 public class JoobyStarter {
 
+    private static Logger logger = LoggerFactory.getLogger(JoobyStarter.class);
     public static Injector moduleInjector = Guice.createInjector(new ModuleInject());
     public static Injector componentInjector;
+    public static JoobyApplication joobyApplication;
 
     public static void run(String[] args, Class<?> rootClass) {
+
+        // 模块扫描
         ModuleScanCof moduleScanCof = moduleInjector.getInstance(ModuleScanCof.class);
         JoobyStarterStore starterStore = moduleInjector.getInstance(JoobyStarterStore.class);
         starterStore.setBasePackage(rootClass.getPackage().getName());
-        moduleScanCof.scan();
+        moduleScanCof.scan(rootClass);
+
+        // 组件扫描
         componentInjector = Guice.createInjector(new ComponentInject());
-        JoobyApplication.runApp(args, JoobyApplication::new);
+
+        // 自定义配置
+        try {
+            joobyApplication = new JoobyApplication(componentInjector.getInstance(WebConfig.class));
+        } catch (Exception e) {
+            logger.info("未配置自定义信息");
+            joobyApplication = new JoobyApplication();
+        }
+
+        // 运行容器
+        JoobyApplication.runApp(args,
+                rootClass.getAnnotation(JoobyPlusStarter.class).EXECUTION_MODE()
+                , new Supplier<Jooby>() {
+                    @Override
+                    public Jooby get() {
+                        return joobyApplication;
+                    }
+                });
     }
+
 }

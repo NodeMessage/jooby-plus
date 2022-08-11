@@ -1,7 +1,8 @@
 package com.nodemessage.test.controller;
 
-import com.github.pagehelper.PageHelper;
-import com.nodemessage.jooby.mybatis.JoobyMybatis;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.nodemessage.jooby.mybatis.JoobyMybatisPlus;
+import com.nodemessage.test.dao.FileInfosDao;
 import io.jooby.annotations.GET;
 import io.jooby.annotations.Path;
 
@@ -15,9 +16,8 @@ public class Hello {
 
     @GET("say")
     public String test() {
-        PageHelper.startPage(1, 3);
-        FileInfoDao mapper = JoobyMybatis.getMapper(FileInfoDao.class);
-        System.out.println(mapper.get());
+        FileInfosDao mapper = JoobyMybatisPlus.getMapper(FileInfosDao.class);
+        System.out.println(mapper.selectList(new QueryWrapper<>()));
         return "ok";
     }
 

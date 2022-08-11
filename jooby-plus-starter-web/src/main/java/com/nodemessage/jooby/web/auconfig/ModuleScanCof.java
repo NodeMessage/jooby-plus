@@ -6,5 +6,5 @@ package com.nodemessage.jooby.web.auconfig;
  * @description
  **/
 public interface ModuleScanCof {
-    void scan();
+    void scan(Class<?> rootClass);
 }

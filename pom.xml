@@ -11,11 +11,22 @@
 
     <modules>
         <module>jooby-plus-starter-web</module>
-        <module>jooby-plus-test</module>
         <module>jooby-plus-starter-mybatis</module>
+        <module>jooby-plus-starter-redis</module>
+        <module>jooby-plus-starter-parent</module>
+        <module>jooby-plus-test</module>
     </modules>
 
     <properties>
+        <jooby.plus.version>1.1.0</jooby.plus.version>
+        <pagehelper.version>5.1.10</pagehelper.version>
+        <mybatis.plus.version>3.5.1</mybatis.plus.version>
+        <dom4j.version>2.1.1</dom4j.version>
+        <redis.version>3.3.0</redis.version>
+        <jsqlparser.version>4.3</jsqlparser.version>
+        <lombok.version>1.18.14</lombok.version>
+        <spring.core.version>5.3.17</spring.core.version>
+
         <jooby.version>2.9.5</jooby.version>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
@@ -31,6 +42,42 @@
                 <version>${jooby.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.github.pagehelper</groupId>
+                <artifactId>pagehelper</artifactId>
+                <version>${pagehelper.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.dom4j</groupId>
+                <artifactId>dom4j</artifactId>
+                <version>${dom4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus</artifactId>
+                <version>${mybatis.plus.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>redis.clients</groupId>
+                <artifactId>jedis</artifactId>
+                <version>${redis.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.jsqlparser</groupId>
+                <artifactId>jsqlparser</artifactId>
+                <version>${jsqlparser.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-core</artifactId>
+                <version>${spring.core.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
