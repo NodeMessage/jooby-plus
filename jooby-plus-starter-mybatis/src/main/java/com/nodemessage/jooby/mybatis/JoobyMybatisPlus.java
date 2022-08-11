@@ -38,6 +38,7 @@ public class JoobyMybatisPlus {
 
     public static MybatisConfiguration configuration;
     public static SqlSessionFactory sqlSessionFactory;
+    public static byte init = 0;
 
     static {
         JoobyMybatisPlus joobyMybatisPlus = new JoobyMybatisPlus();

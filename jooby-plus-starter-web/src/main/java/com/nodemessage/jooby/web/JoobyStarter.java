@@ -3,6 +3,7 @@ package com.nodemessage.jooby.web;
 
 import com.google.inject.Guice;
 import com.google.inject.Injector;
+import com.nodemessage.jooby.mybatis.JoobyMybatisPlus;
 import com.nodemessage.jooby.web.auconfig.ComponentInject;
 import com.nodemessage.jooby.web.auconfig.JoobyStarterStore;
 import com.nodemessage.jooby.web.auconfig.ModuleInject;
@@ -61,6 +62,15 @@ public class JoobyStarter {
                         return joobyApplication;
                     }
                 });
+
+        new Banner().setting();
+        logger.info("Jooby-Plus Started Successful.");
+        try {
+            byte init = JoobyMybatisPlus.init;
+            logger.info("Jooby-Plus-MybatisPlus Started Successful.");
+        } catch (Error ignored) {
+
+        }
     }
 
 }

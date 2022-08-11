@@ -8,5 +8,11 @@ import io.jooby.Jooby;
  * @description
  **/
 public interface WebConfig {
+
     void defaultConfig(Jooby jooby);
+
+    default JoobyConfig fastSetting(Jooby jooby) {
+        return new JoobyConfig(jooby);
+    }
+
 }
