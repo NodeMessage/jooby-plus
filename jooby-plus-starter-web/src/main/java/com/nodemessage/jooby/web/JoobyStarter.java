@@ -18,9 +18,8 @@ import java.util.function.Supplier;
 /**
  * @author wjsmc
  * @date 2022/8/7 22:35
- * @description
+ * @description Jooby Web 自动启动器
  **/
-
 public class JoobyStarter {
 
     private static Logger logger = LoggerFactory.getLogger(JoobyStarter.class);
@@ -28,18 +27,24 @@ public class JoobyStarter {
     public static Injector componentInjector;
     public static JoobyApplication joobyApplication;
 
+    /**
+     * @return void
+     * @description 自动扫描器，负责组件注册与web容器自动启动
+     * @date 2022/8/11 13:43
+     * @author wjsmc
+     **/
     public static void run(String[] args, Class<?> rootClass) {
 
-        // 模块扫描
+        /* 模块扫描 */
         ModuleScanCof moduleScanCof = moduleInjector.getInstance(ModuleScanCof.class);
         JoobyStarterStore starterStore = moduleInjector.getInstance(JoobyStarterStore.class);
         starterStore.setBasePackage(rootClass.getPackage().getName());
         moduleScanCof.scan(rootClass);
 
-        // 组件扫描
+        /* 组件扫描 */
         componentInjector = Guice.createInjector(new ComponentInject());
 
-        // 自定义配置
+        /* 自定义配置 */
         try {
             joobyApplication = new JoobyApplication(componentInjector.getInstance(WebConfig.class));
         } catch (Exception e) {
@@ -47,7 +52,7 @@ public class JoobyStarter {
             joobyApplication = new JoobyApplication();
         }
 
-        // 运行容器
+        /* 运行容器 */
         JoobyApplication.runApp(args,
                 rootClass.getAnnotation(JoobyPlusStarter.class).EXECUTION_MODE()
                 , new Supplier<Jooby>() {

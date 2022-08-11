@@ -32,7 +32,7 @@ import java.util.jar.JarFile;
 /**
  * @author wjsmc
  * @date 2022/8/10 17:22
- * @description
+ * @description Mybatis Plus工具
  **/
 public class JoobyMybatisPlus {
 

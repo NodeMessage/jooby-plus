@@ -8,7 +8,7 @@ import java.lang.annotation.Target;
 /**
  * @author wjsmc
  * @date 2022/8/7 22:30
- * @description
+ * @description 模块扫描配置
  **/
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)

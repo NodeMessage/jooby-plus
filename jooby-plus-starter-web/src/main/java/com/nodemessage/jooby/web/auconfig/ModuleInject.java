@@ -9,7 +9,7 @@ import com.nodemessage.jooby.web.auconfig.impl.IModuleScanCof;
 /**
  * @author wjsmc
  * @date 2022/8/8 0:02
- * @description
+ * @description 模块注入绑定
  **/
 public class ModuleInject extends AbstractModule {
 

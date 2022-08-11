@@ -12,7 +12,7 @@ import static io.jooby.ExecutionMode.EVENT_LOOP;
 /**
  * @author wjsmc
  * @date 2022/8/7 22:32
- * @description
+ * @description jooby plus 启动器标识
  **/
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)

@@ -13,7 +13,7 @@ import java.util.LinkedList;
 /**
  * @author wjsmc
  * @date 2022/8/8 21:17
- * @description
+ * @description 控制器扫描
  **/
 @Singleton
 public class IControllerScanCof implements ControllerScanCof {

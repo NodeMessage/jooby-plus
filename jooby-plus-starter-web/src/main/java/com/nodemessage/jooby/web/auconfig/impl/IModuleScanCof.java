@@ -26,7 +26,7 @@ import java.util.jar.JarFile;
 /**
  * @author wjsmc
  * @date 2022/8/8 13:36
- * @description
+ * @description 模块扫描
  **/
 @Singleton
 public class IModuleScanCof implements ModuleScanCof {

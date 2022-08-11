@@ -8,7 +8,7 @@ import javax.inject.Singleton;
 /**
  * @author wjsmc
  * @date 2022/8/7 22:58
- * @description
+ * @description 字段仓库
  **/
 @Singleton
 public class IJoobyStarterStore implements JoobyStarterStore {

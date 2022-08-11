@@ -10,7 +10,7 @@ import java.util.HashMap;
 /**
  * @author wjsmc
  * @date 2022/8/8 18:07
- * @description
+ * @description 组件自动注册
  **/
 public class ComponentInject extends AbstractModule {
 

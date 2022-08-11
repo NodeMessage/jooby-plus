@@ -8,7 +8,7 @@ import java.lang.annotation.Target;
 /**
  * @author wjsmc
  * @date 2022/8/8 16:41
- * @description
+ * @description 自动注入容器标识
  **/
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
