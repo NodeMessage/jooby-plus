@@ -1,6 +1,5 @@
 package com.nodemessage.jooby.web;
 
-import sun.misc.IOUtils;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -14,9 +13,11 @@ public class Banner {
     public void setting() {
         InputStream banner = Thread.currentThread().getContextClassLoader().getResourceAsStream("banner");
         try {
-            String bannerTxt = new String(IOUtils.readFully(banner, -1, true));
+            int iAvail = banner.available();
+            byte[] bytes = new byte[iAvail];
+            banner.read(bytes);
             System.out.println();
-            System.out.println(bannerTxt);
+            System.out.println(new String(bytes));
             System.out.print("  ===   " + "\033[0;0;31m" + "节点科讯(NodeMessage)" + "\033[0m");
             System.out.print("                 ");
             System.out.println("http://nodemessage.openpool.cn/");

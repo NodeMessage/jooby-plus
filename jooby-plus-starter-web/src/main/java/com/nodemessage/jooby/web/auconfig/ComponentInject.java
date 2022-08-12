@@ -20,6 +20,7 @@ public class ComponentInject extends AbstractModule {
     public static HashMap<Class, Object> beansInstant = new HashMap<>();
 
     @Override
+    @SuppressWarnings("unchecked")
     protected void configure() {
         beans.forEach((k, v) -> {
             bind(k).to(v);
